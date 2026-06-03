@@ -76,6 +76,7 @@ const services = [
   {
     href: "/taxi-executivo-londrina",
     icon: "🚘",
+    image: "/og-taxi-executivo-londrina.jpg",
     title: "Táxi Executivo",
     desc: "Veículo premium, motorista bilíngue e atendimento discreto para executivos e viajantes.",
     cta: "Solicitar táxi executivo",
@@ -83,6 +84,7 @@ const services = [
   {
     href: "/transporte-empresarial-londrina",
     icon: "🏢",
+    image: null,
     title: "Transporte Empresarial",
     desc: "Contratos mensais com nota fiscal, relatório de corridas e atendimento prioritário para empresas.",
     cta: "Solicitar proposta",
@@ -90,6 +92,7 @@ const services = [
   {
     href: "/taxi-aeroporto-londrina",
     icon: "✈️",
+    image: "/og-taxi-aeroporto-londrina.jpg",
     title: "Transfer Aeroporto",
     desc: "Transfer pontual para o Aeroporto Governador José Richa. Motorista aguarda no terminal.",
     cta: "Agendar transfer",
@@ -97,6 +100,7 @@ const services = [
   {
     href: "/taxi-24-horas-londrina",
     icon: "🌙",
+    image: null,
     title: "Táxi 24 Horas",
     desc: "Disponível na madrugada, feriados e finais de semana. Ligue ou mande WhatsApp agora.",
     cta: "Chamar agora",
@@ -104,6 +108,7 @@ const services = [
   {
     href: "/taxi-hospital-londrina",
     icon: "🏥",
+    image: null,
     title: "Táxi para Hospitais",
     desc: "Atendimento discreto e sem pressa para consultas, internações e alta hospitalar em Londrina.",
     cta: "Solicitar táxi hospitalar",
@@ -111,6 +116,7 @@ const services = [
   {
     href: "/taxi-com-cadeirinha-londrina",
     icon: "👶",
+    image: null,
     title: "Táxi com Cadeirinha",
     desc: "Cadeirinha homologada pelo INMETRO para transporte seguro de bebês e crianças.",
     cta: "Agendar com cadeirinha",
@@ -118,6 +124,7 @@ const services = [
   {
     href: "/taxi-londrina-curitiba",
     icon: "🛣️",
+    image: "/og-taxi-londrina-curitiba.jpg",
     title: "Londrina → Curitiba",
     desc: "Transfer direto pela BR-376, aproximadamente 4 horas. Agendamento com hora marcada.",
     cta: "Solicitar rota Curitiba",
@@ -125,6 +132,7 @@ const services = [
   {
     href: "/taxi-londrina-maringa",
     icon: "📍",
+    image: null,
     title: "Londrina → Maringá",
     desc: "Rota regional pela PR-317, aproximadamente 1h20. Ideal para trabalho ou consultas.",
     cta: "Solicitar rota Maringá",
@@ -195,19 +203,33 @@ export default function HomePage() {
           style={{ background: "linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%)" }}
           className="relative overflow-hidden"
         >
-          {/* Detalhe visual — faixa amarela diagonal */}
+          {/* Hero image — desktop/tablet only, oculta no mobile via CSS */}
           <div
             aria-hidden="true"
+            className="hero-image-wrapper"
             style={{
               position: "absolute",
               top: 0,
               right: 0,
-              width: "40%",
+              width: "50%",
               height: "100%",
-              background: "linear-gradient(135deg, transparent 0%, rgba(255,204,0,0.06) 100%)",
-              pointerEvents: "none",
+              zIndex: 0,
             }}
-          />
+          >
+            <Image
+              src="/og-home.jpg"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 768px) 0px, 50vw"
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to right, #0A0A0A 0%, rgba(10,10,10,0.5) 40%, transparent 100%)",
+            }} />
+          </div>
 
           <div className="container-base section-py" style={{ position: "relative", zIndex: 1 }}>
             <div style={{ maxWidth: "680px" }}>
@@ -436,7 +458,7 @@ export default function HomePage() {
                     flexDirection: "column",
                     background: "#FFFFFF",
                     borderRadius: "12px",
-                    padding: "1.5rem",
+                    overflow: "hidden",
                     border: "1.5px solid #E8E8E8",
                     boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
                     transition: "border-color 0.2s, box-shadow 0.2s, transform 0.2s",
@@ -444,27 +466,57 @@ export default function HomePage() {
                     color: "inherit",
                   }}
                 >
-                  <span style={{ fontSize: "2.25rem", marginBottom: "0.75rem" }}>{s.icon}</span>
-                  <h3 style={{ fontWeight: 700, fontSize: "1rem", marginBottom: "0.5rem", color: "#0A0A0A" }}>
-                    {s.title}
-                  </h3>
-                  <p style={{ color: "#6B6B6B", fontSize: "0.875rem", lineHeight: 1.6, flex: 1, marginBottom: "1rem" }}>
-                    {s.desc}
-                  </p>
-                  <span
-                    style={{
-                      fontSize: "0.8rem",
-                      fontWeight: 700,
-                      color: "#0A0A0A",
-                      background: "#FFCC00",
-                      borderRadius: "6px",
-                      padding: "6px 12px",
-                      display: "inline-block",
-                      width: "fit-content",
-                    }}
-                  >
-                    {s.cta} →
-                  </span>
+                  {/* Imagem com aspect-ratio fixo 16/9 — zero CLS */}
+                  {s.image ? (
+                    <div style={{ position: "relative", paddingTop: "56.25%", width: "100%" }}>
+                      <Image
+                        src={s.image}
+                        alt={s.title}
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        style={{ objectFit: "cover", objectPosition: "center" }}
+                      />
+                    </div>
+                  ) : (
+                    <div style={{
+                      paddingTop: "56.25%",
+                      position: "relative",
+                      background: "#0A0A0A",
+                      borderBottom: "3px solid #FFCC00",
+                    }}>
+                      <span style={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "2.5rem",
+                      }}>{s.icon}</span>
+                    </div>
+                  )}
+                  <div style={{ padding: "1.25rem", display: "flex", flexDirection: "column", flex: 1 }}>
+                    <h3 style={{ fontWeight: 700, fontSize: "1rem", marginBottom: "0.5rem", color: "#0A0A0A" }}>
+                      {s.title}
+                    </h3>
+                    <p style={{ color: "#6B6B6B", fontSize: "0.875rem", lineHeight: 1.6, flex: 1, marginBottom: "1rem" }}>
+                      {s.desc}
+                    </p>
+                    <span
+                      style={{
+                        fontSize: "0.8rem",
+                        fontWeight: 700,
+                        color: "#0A0A0A",
+                        background: "#FFCC00",
+                        borderRadius: "6px",
+                        padding: "6px 12px",
+                        display: "inline-block",
+                        width: "fit-content",
+                      }}
+                    >
+                      {s.cta} →
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
