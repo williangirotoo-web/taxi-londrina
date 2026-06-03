@@ -84,7 +84,7 @@ const services = [
   {
     href: "/transporte-empresarial-londrina",
     icon: "🏢",
-    image: null,
+    image: "/og-transporte-empresarial-londrina.jpg",
     title: "Transporte Empresarial",
     desc: "Contratos mensais com nota fiscal, relatório de corridas e atendimento prioritário para empresas.",
     cta: "Solicitar proposta",
@@ -108,7 +108,7 @@ const services = [
   {
     href: "/taxi-hospital-londrina",
     icon: "🏥",
-    image: null,
+    image: "/og-taxi-hospital-londrina.jpg",
     title: "Táxi para Hospitais",
     desc: "Atendimento discreto e sem pressa para consultas, internações e alta hospitalar em Londrina.",
     cta: "Solicitar táxi hospitalar",
@@ -116,7 +116,7 @@ const services = [
   {
     href: "/taxi-com-cadeirinha-londrina",
     icon: "👶",
-    image: null,
+    image: "/og-taxi-cadeirinha-londrina.jpg",
     title: "Táxi com Cadeirinha",
     desc: "Cadeirinha homologada pelo INMETRO para transporte seguro de bebês e crianças.",
     cta: "Agendar com cadeirinha",
@@ -132,7 +132,7 @@ const services = [
   {
     href: "/taxi-londrina-maringa",
     icon: "📍",
-    image: null,
+    image: "/og-taxi-londrina-maringa.jpg",
     title: "Londrina → Maringá",
     desc: "Rota regional pela PR-317, aproximadamente 1h20. Ideal para trabalho ou consultas.",
     cta: "Solicitar rota Maringá",

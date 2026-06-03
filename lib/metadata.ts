@@ -186,7 +186,7 @@ export const pageMetadata = {
       "Atendimento a empresas, gestores de frota e RH. Solicite proposta.",
     path: "/transporte-empresarial-londrina",
     ogImage: "og-transporte-empresarial-londrina.jpg",
-    ogImageAlt: "Transporte empresarial em Londrina — frota corporativa com nota fiscal",
+    ogImageAlt: "Transporte empresarial em Londrina — Corolla preto em prédio corporativo",
   }),
 
   taxiAeroporto: buildMetadata({
@@ -205,8 +205,8 @@ export const pageMetadata = {
       "Táxi 24 horas em Londrina para urgências, madrugada e feriados. " +
       "Rodoviária, plantão e emergências atendidos. Ligue agora ou chame pelo WhatsApp.",
     path: "/taxi-24-horas-londrina",
-    ogImage: "og-taxi-24-horas-londrina.jpg",
-    ogImageAlt: "Táxi 24 horas em Londrina — atendimento imediato na madrugada",
+    ogImage: "og-home.jpg",       // TODO: criar og-taxi-24-horas-londrina.jpg
+    ogImageAlt: "Táxi 24 horas em Londrina — atendimento imediato",
   }),
 
   taxiHospital: buildMetadata({
@@ -216,7 +216,7 @@ export const pageMetadata = {
       "Hospital do Coração, UEL. Consultas, internações e alta hospitalar. WhatsApp.",
     path: "/taxi-hospital-londrina",
     ogImage: "og-taxi-hospital-londrina.jpg",
-    ogImageAlt: "Táxi para Hospital Evangélico e HCor em Londrina",
+    ogImageAlt: "Táxi para hospital em Londrina — Corolla preto na entrada do hospital",
   }),
 
   taxiCadeirinha: buildMetadata({
@@ -226,7 +226,7 @@ export const pageMetadata = {
       "motorista experiente no transporte de bebês e crianças. Agende com antecedência.",
     path: "/taxi-com-cadeirinha-londrina",
     ogImage: "og-taxi-cadeirinha-londrina.jpg",
-    ogImageAlt: "Táxi com cadeirinha infantil em Londrina — transporte seguro para bebês",
+    ogImageAlt: "Táxi com cadeirinha infantil em Londrina — interior com assento de bebê instalado",
   }),
 
   taxiCuritiba: buildMetadata({
@@ -246,7 +246,7 @@ export const pageMetadata = {
       "tempo médio de 1h20. Trabalho, consulta médica ou visita. Agende pelo WhatsApp.",
     path: "/taxi-londrina-maringa",
     ogImage: "og-taxi-londrina-maringa.jpg",
-    ogImageAlt: "Táxi de Londrina para Maringá — transfer direto pela PR-317",
+    ogImageAlt: "Táxi de Londrina para Maringá — Corolla preto na rodovia do Paraná ao pôr do sol",
   }),
 
   contato: buildMetadata({
@@ -255,7 +255,7 @@ export const pageMetadata = {
       "Entre em contato para solicitar táxi, orçamento de transporte empresarial " +
       "ou proposta de contrato em Londrina. WhatsApp, telefone ou formulário.",
     path: "/contato",
-    ogImage: "og-contato.jpg",
+    ogImage: "og-home.jpg",       // TODO: criar og-contato.jpg
     ogImageAlt: `Contato ${business.shortName} — orçamento de transporte em Londrina`,
   }),
 
@@ -265,7 +265,7 @@ export const pageMetadata = {
       "Dicas, informações e guias sobre transporte em Londrina. " +
       "Aeroporto José Richa, rotas, transfer executivo e mais.",
     path: "/blog",
-    ogImage: "og-blog.jpg",
+    ogImage: "og-home.jpg",       // TODO: criar og-blog.jpg
     ogImageAlt: `Blog ${business.shortName} — dicas de transporte em Londrina`,
   }),
 
