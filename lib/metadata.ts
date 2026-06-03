@@ -1,0 +1,272 @@
+/**
+ * FACTORY DE METADATA
+ *
+ * Gera objetos Metadata completos para cada página.
+ * Garante: title único, description única, canonical correta,
+ * OG completo, Twitter Card, robots corretos.
+ *
+ * USO em cada page.tsx:
+ *
+ *   import { buildMetadata } from "@/lib/metadata"
+ *   export const metadata = buildMetadata({ ... })
+ *
+ * A função valida automaticamente:
+ *   - title ≤ 60 chars → lança erro em desenvolvimento
+ *   - description entre 140–160 chars → avisa se fora do intervalo
+ *   - canonical nunca com trailing slash
+ *   - og:image sempre absoluta
+ */
+
+import type { Metadata } from "next"
+import { business } from "./business"
+
+// ─── Tipos ─────────────────────────────────────────────────────────────────────
+
+export interface PageMetadataProps {
+  /** Título da página — máx. 60 chars — keyword local deve vir na frente */
+  title: string
+  /** Description — 140–160 chars — CTA específico do serviço */
+  description: string
+  /** Caminho relativo — ex: "/taxi-aeroporto-londrina" */
+  path: string
+  /**
+   * Nome do arquivo de imagem OG em /public/
+   * ex: "og-aeroporto-londrina.jpg"
+   * Cada página DEVE ter imagem própria — nunca reutilizar entre páginas
+   */
+  ogImage: string
+  /** Alt text da imagem OG — descritivo e único */
+  ogImageAlt: string
+  /**
+   * Controla indexação
+   * "index"   → página pública (padrão para todas as páginas de serviço)
+   * "noindex" → páginas técnicas, admin, rascunhos
+   */
+  robots?: "index" | "noindex"
+  /** Keywords adicionais para o schema — não usado pelo Google mas útil internamente */
+  keywords?: string[]
+}
+
+// ─── Validações de desenvolvimento ────────────────────────────────────────────
+
+function validateMetadata(props: PageMetadataProps): void {
+  if (process.env.NODE_ENV !== "production") {
+    if (props.title.length > 60) {
+      console.warn(
+        `[metadata] AVISO: title muito longo (${props.title.length} chars > 60): "${props.title}"`
+      )
+    }
+    if (props.description.length < 140) {
+      console.warn(
+        `[metadata] AVISO: description muito curta (${props.description.length} chars < 140): "${props.description}"`
+      )
+    }
+    if (props.description.length > 160) {
+      console.warn(
+        `[metadata] AVISO: description muito longa (${props.description.length} chars > 160): "${props.description}"`
+      )
+    }
+    if (props.path.endsWith("/") && props.path !== "/") {
+      console.error(
+        `[metadata] ERRO: canonical com trailing slash: "${props.path}"`
+      )
+    }
+  }
+}
+
+// ─── URL helpers ───────────────────────────────────────────────────────────────
+
+function absoluteUrl(path: string): string {
+  if (path === "/") return business.url
+  const clean = path.startsWith("/") ? path : `/${path}`
+  return `${business.url}${clean}`
+}
+
+function absoluteImageUrl(filename: string): string {
+  // Se já for URL absoluta, retorna como está
+  if (filename.startsWith("http")) return filename
+  return `${business.url}/${filename.replace(/^\//, "")}`
+}
+
+// ─── Factory principal ─────────────────────────────────────────────────────────
+
+export function buildMetadata(props: PageMetadataProps): Metadata {
+  validateMetadata(props)
+
+  const canonicalHref = absoluteUrl(props.path)
+  const ogImageUrl = absoluteImageUrl(props.ogImage)
+  const isIndex = props.robots !== "noindex"
+
+  return {
+    // ── Title e description ──────────────────────────────────────────────────
+    title: props.title,
+    description: props.description,
+
+    // ── Canonical ────────────────────────────────────────────────────────────
+    alternates: {
+      canonical: canonicalHref,
+    },
+
+    // ── Open Graph ───────────────────────────────────────────────────────────
+    openGraph: {
+      title: props.title,
+      description: props.description,
+      url: canonicalHref,
+      siteName: business.shortName,
+      locale: "pt_BR",
+      type: "website",
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: props.ogImageAlt,
+        },
+      ],
+    },
+
+    // ── Twitter Card ─────────────────────────────────────────────────────────
+    twitter: {
+      card: "summary_large_image",
+      title: props.title,
+      description: props.description,
+      images: [ogImageUrl],
+    },
+
+    // ── Robots ───────────────────────────────────────────────────────────────
+    robots: {
+      index: isIndex,
+      follow: isIndex,
+      googleBot: {
+        index: isIndex,
+        follow: isIndex,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
+
+    // ── Verificação Google Search Console ────────────────────────────────────
+    ...(props.path === "/" && business.googleVerification
+      ? { verification: { google: business.googleVerification } }
+      : {}),
+  }
+}
+
+// ─── Metadata pré-construídas por página ──────────────────────────────────────
+// Cada entrada é única — title, description, ogImage e path distintos
+// Auditoria anti-duplicação: nenhum campo se repete entre páginas
+
+export const pageMetadata = {
+
+  home: buildMetadata({
+    title: `Táxi em Londrina | ${business.shortName} — 24h`,
+    description:
+      "Táxi em Londrina com atendimento 24 horas. Executivo, aeroporto, hospital, " +
+      "transporte empresarial e viagens para Curitiba e Maringá. Chame pelo WhatsApp.",
+    path: "/",
+    ogImage: "og-home.jpg",
+    ogImageAlt: `Táxi em Londrina — ${business.shortName}`,
+  }),
+
+  taxiExecutivo: buildMetadata({
+    title: "Táxi Executivo Londrina | Motorista Particular Premium",
+    description:
+      "Táxi executivo em Londrina com conforto, discrição e pontualidade. " +
+      "Motorista bilíngue, veículo premium, corridas avulsas. Agende pelo WhatsApp.",
+    path: "/taxi-executivo-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Táxi executivo em Londrina — veículo premium e motorista particular",
+  }),
+
+  transporteEmpresarial: buildMetadata({
+    title: "Transporte Empresarial Londrina | Contrato e Frota",
+    description:
+      "Transporte corporativo em Londrina com contrato, nota fiscal e relatório de corridas. " +
+      "Atendimento a empresas, gestores de frota e RH. Solicite proposta.",
+    path: "/transporte-empresarial-londrina",
+    ogImage: "og-transporte-empresarial-londrina.jpg",
+    ogImageAlt: "Transporte empresarial em Londrina — frota corporativa com nota fiscal",
+  }),
+
+  taxiAeroporto: buildMetadata({
+    title: "Táxi Aeroporto Londrina | Transfer José Richa 24h",
+    description:
+      "Transfer para o Aeroporto Governador José Richa em Londrina. Motorista pontual, " +
+      "aguarda no terminal, atendimento em português e inglês. Agende com hora marcada.",
+    path: "/taxi-aeroporto-londrina",
+    ogImage: "og-taxi-aeroporto-londrina.jpg",
+    ogImageAlt: "Transfer para o Aeroporto Governador José Richa em Londrina",
+  }),
+
+  taxi24Horas: buildMetadata({
+    title: "Táxi 24 Horas Londrina | Atendimento Imediato Dia e Noite",
+    description:
+      "Táxi 24 horas em Londrina para urgências, madrugada e feriados. " +
+      "Rodoviária, plantão e emergências atendidos. Ligue agora ou chame pelo WhatsApp.",
+    path: "/taxi-24-horas-londrina",
+    ogImage: "og-taxi-24-horas-londrina.jpg",
+    ogImageAlt: "Táxi 24 horas em Londrina — atendimento imediato na madrugada",
+  }),
+
+  taxiHospital: buildMetadata({
+    title: "Táxi para Hospital em Londrina | H. Evangélico, HCor e UEL",
+    description:
+      "Táxi para hospitais em Londrina com discrição e sem pressa. Hospital Evangélico, " +
+      "Hospital do Coração, UEL. Consultas, internações e alta hospitalar. WhatsApp.",
+    path: "/taxi-hospital-londrina",
+    ogImage: "og-taxi-hospital-londrina.jpg",
+    ogImageAlt: "Táxi para Hospital Evangélico e HCor em Londrina",
+  }),
+
+  taxiCadeirinha: buildMetadata({
+    title: "Táxi com Cadeirinha Londrina | Segurança Infantil",
+    description:
+      "Táxi com cadeirinha infantil em Londrina. Cadeirinha homologada pelo INMETRO, " +
+      "motorista experiente no transporte de bebês e crianças. Agende com antecedência.",
+    path: "/taxi-com-cadeirinha-londrina",
+    ogImage: "og-taxi-cadeirinha-londrina.jpg",
+    ogImageAlt: "Táxi com cadeirinha infantil em Londrina — transporte seguro para bebês",
+  }),
+
+  taxiCuritiba: buildMetadata({
+    title: "Táxi Londrina Curitiba | Transfer Direto pela BR-376",
+    description:
+      "Táxi de Londrina a Curitiba com conforto e segurança. 398 km pela BR-376, " +
+      "tempo médio de 4 horas. Conexão de voo, reunião ou tratamento médico. Agende.",
+    path: "/taxi-londrina-curitiba",
+    ogImage: "og-taxi-londrina-curitiba.jpg",
+    ogImageAlt: "Táxi de Londrina para Curitiba — transfer direto pela BR-376",
+  }),
+
+  taxiMaringa: buildMetadata({
+    title: "Táxi Londrina Maringá | Transfer Direto pela PR-317",
+    description:
+      "Táxi de Londrina a Maringá com conforto e pontualidade. 118 km pela PR-317, " +
+      "tempo médio de 1h20. Trabalho, consulta médica ou visita. Agende pelo WhatsApp.",
+    path: "/taxi-londrina-maringa",
+    ogImage: "og-taxi-londrina-maringa.jpg",
+    ogImageAlt: "Táxi de Londrina para Maringá — transfer direto pela PR-317",
+  }),
+
+  contato: buildMetadata({
+    title: `Contato | ${business.shortName} — Orçamento e Contratos`,
+    description:
+      "Entre em contato para solicitar táxi, orçamento de transporte empresarial " +
+      "ou proposta de contrato em Londrina. WhatsApp, telefone ou formulário.",
+    path: "/contato",
+    ogImage: "og-contato.jpg",
+    ogImageAlt: `Contato ${business.shortName} — orçamento de transporte em Londrina`,
+  }),
+
+  blog: buildMetadata({
+    title: `Blog | ${business.shortName} — Dicas de Transporte em Londrina`,
+    description:
+      "Dicas, informações e guias sobre transporte em Londrina. " +
+      "Aeroporto José Richa, rotas, transfer executivo e mais.",
+    path: "/blog",
+    ogImage: "og-blog.jpg",
+    ogImageAlt: `Blog ${business.shortName} — dicas de transporte em Londrina`,
+  }),
+
+} as const

@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design system — Táxi Londrina ────────────────────────────────────────── */
+:root {
+  /* Cores principais */
+  --color-yellow:        #FFCC00;
+  --color-yellow-dark:   #E6B800;
+  --color-yellow-light:  #FFF3B0;
+  --color-black:         #0A0A0A;
+  --color-gray-900:      #111111;
+  --color-gray-800:      #1A1A1A;
+  --color-gray-700:      #2A2A2A;
+  --color-gray-500:      #6B6B6B;
+  --color-gray-300:      #D0D0D0;
+  --color-gray-100:      #F5F5F5;
+  --color-white:         #FFFFFF;
+
+  /* Semânticas */
+  --color-primary:       var(--color-yellow);
+  --color-primary-dark:  var(--color-yellow-dark);
+  --color-surface:       var(--color-white);
+  --color-surface-alt:   var(--color-gray-100);
+  --color-text:          var(--color-black);
+  --color-text-muted:    var(--color-gray-500);
+  --color-border:        var(--color-gray-300);
+
+  /* Tipografia */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  /* Espaçamento */
+  --section-py: 5rem;
+  --container-px: 1.5rem;
+  --container-max: 72rem;
+
+  /* Sombras */
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.14);
+  --shadow-cta: 0 4px 24px rgba(255,204,0,0.35);
+}
+
+/* ─── Reset base ────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* ─── Utilitários globais ───────────────────────────────────────────────────── */
+.container-base {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+}
+
+.section-py {
+  padding-block: var(--section-py);
+}
+
+/* Foco acessível */
+:focus-visible {
+  outline: 3px solid var(--color-yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Link base */
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Imagem responsiva base */
+img { max-width: 100%; height: auto; }
+
+/* ─── Animações ─────────────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-yellow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(255, 204, 0, 0); }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.6s ease both;
+}
+
+.pulse-cta {
+  animation: pulse-yellow 2s ease-in-out infinite;
+}
+
+/* Delays para stagger */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }

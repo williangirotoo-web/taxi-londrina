@@ -1,0 +1,39 @@
+{
+  "name": "NOME_DA_EMPRESA",
+  "short_name": "NOME_CURTO",
+  "description": "Táxi em Londrina com atendimento 24 horas. Executivo, aeroporto, hospital e transporte empresarial.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FFCC00",
+  "lang": "pt-BR",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Chamar táxi pelo WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Abre o WhatsApp para solicitar um táxi",
+      "url": "/?utm_source=pwa&utm_medium=shortcut&utm_campaign=whatsapp",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
