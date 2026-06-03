@@ -80,7 +80,7 @@ export const business = {
   },
 
   // ─── Google ────────────────────────────────────────────────────────────────
-  googleVerification: "COLE_TOKEN_DO_SEARCH_CONSOLE",
+  googleVerification: "vL-2Eb1ucml61wcyFj8J3nvCsd4WfheL6V0X35i1gvo",
   gmbPlaceId: "PLACE_ID_DO_GOOGLE_MAPS", // encontrado no GBP
 
   // ─── Marca visual ──────────────────────────────────────────────────────────
