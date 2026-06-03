@@ -160,7 +160,7 @@ export function buildMetadata(props: PageMetadataProps): Metadata {
 export const pageMetadata = {
 
   home: buildMetadata({
-    title: `Táxi em Londrina | ${business.shortName} — 24h`,
+    title: `Táxi em Londrina 24h | Aeroporto, Executivo e Viagens`,
     description:
       "Táxi em Londrina com atendimento 24 horas. Executivo, aeroporto, hospital, " +
       "transporte empresarial e viagens para Curitiba e Maringá. Chame pelo WhatsApp.",
