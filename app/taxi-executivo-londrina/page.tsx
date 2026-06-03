@@ -147,6 +147,33 @@ const casosDeUso = [
 export default function TaxiExecutivoPage() {
   return (
     <>
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchema(serviceSchema) }} />
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchema(buildFAQSchema(faqItems)) }} />
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeSchema(breadcrumbSchema) }} />
+
+      <main>
+        {/* Breadcrumb */}
+        <nav aria-label="Navegação estrutural"
+          style={{ background: "#F5F5F5", padding: "0.75rem 1.5rem", fontSize: "0.8rem", color: "#6B6B6B" }}>
+          <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+            <Link href="/" style={{ color: "#6B6B6B", textDecoration: "none" }}>Home</Link>
+            <span style={{ margin: "0 0.5rem" }}>›</span>
+            <span style={{ color: "#0A0A0A", fontWeight: 600 }}>Táxi Executivo Londrina</span>
+          </div>
+        </nav>
+
+        {/* HERO */}
+        <section
+          aria-label="Táxi executivo em Londrina"
+          style={{
+            background: "linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 60%, #0f0f0f 100%)",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
                 {/* Hero image — desktop/tablet only, oculta no mobile via CSS */}
           <div
             aria-hidden="true"
