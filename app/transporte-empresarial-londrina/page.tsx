@@ -17,6 +17,7 @@
  */
 
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { pageMetadata } from "@/lib/metadata"
 import {
@@ -172,11 +173,33 @@ export default function TransporteEmpresarialPage() {
         ════════════════════════════════════════════════════════════ */}
         <section aria-label="Transporte empresarial em Londrina"
           style={{ background: "linear-gradient(135deg, #0A0A0A 0%, #111827 100%)", position: "relative", overflow: "hidden" }}>
-          <div aria-hidden="true" style={{
-            position: "absolute", top: 0, right: 0, width: "45%", height: "100%",
-            background: "linear-gradient(120deg, transparent 0%, rgba(255,204,0,0.05) 100%)",
-            pointerEvents: "none",
-          }} />
+                    {/* Hero image — desktop/tablet only, oculta no mobile via CSS */}
+          <div
+            aria-hidden="true"
+            className="hero-image-wrapper"
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "50%",
+              height: "100%",
+              zIndex: 0,
+            }}
+          >
+            <Image
+              src="/og-transporte-empresarial-londrina.jpg"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 768px) 0px, 50vw"
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to right, #0A0A0A 0%, rgba(10,10,10,0.5) 40%, transparent 100%)",
+            }} />
+          </div>
           <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "5rem 1.5rem", position: "relative", zIndex: 1 }}>
             <div style={{ maxWidth: "700px" }}>
 

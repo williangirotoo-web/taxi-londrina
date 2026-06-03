@@ -23,6 +23,7 @@
  */
 
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { pageMetadata } from "@/lib/metadata"
 import {
@@ -146,51 +147,33 @@ const casosDeUso = [
 export default function TaxiExecutivoPage() {
   return (
     <>
-      {/* Schemas da página */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeSchema(serviceSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeSchema(faqItems.length > 0 ? buildFAQSchema(faqItems) : {}) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeSchema(breadcrumbSchema) }}
-      />
-
-      <main>
-        {/* ── Breadcrumb nav ──────────────────────────────────────────────── */}
-        <nav
-          aria-label="Navegação estrutural"
-          style={{ background: "#F5F5F5", padding: "0.75rem 1.5rem", fontSize: "0.8rem", color: "#6B6B6B" }}
-        >
-          <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-            <Link href="/" style={{ color: "#6B6B6B", textDecoration: "none" }}>Home</Link>
-            <span style={{ margin: "0 0.5rem" }}>›</span>
-            <span style={{ color: "#0A0A0A", fontWeight: 600 }}>Táxi Executivo Londrina</span>
+                {/* Hero image — desktop/tablet only, oculta no mobile via CSS */}
+          <div
+            aria-hidden="true"
+            className="hero-image-wrapper"
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "50%",
+              height: "100%",
+              zIndex: 0,
+            }}
+          >
+            <Image
+              src="/og-taxi-executivo-londrina.jpg"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 768px) 0px, 50vw"
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to right, #0A0A0A 0%, rgba(10,10,10,0.5) 40%, transparent 100%)",
+            }} />
           </div>
-        </nav>
-
-        {/* ════════════════════════════════════════════════════════════════════
-            HERO — acima da dobra com H1, CTAs e trust signals
-        ════════════════════════════════════════════════════════════════════ */}
-        <section
-          aria-label="Táxi executivo em Londrina"
-          style={{
-            background: "linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 60%, #0f0f0f 100%)",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          {/* Detalhe visual — listra diagonal premium */}
-          <div aria-hidden="true" style={{
-            position: "absolute", top: 0, right: 0,
-            width: "50%", height: "100%",
-            background: "linear-gradient(135deg, transparent 30%, rgba(255,204,0,0.04) 100%)",
-            pointerEvents: "none",
-          }} />
 
           <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "5rem 1.5rem", position: "relative", zIndex: 1 }}>
             <div style={{ maxWidth: "700px" }}>

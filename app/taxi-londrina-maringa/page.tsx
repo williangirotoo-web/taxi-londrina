@@ -26,6 +26,7 @@
  */
 
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { pageMetadata } from "@/lib/metadata"
 import {
@@ -265,11 +266,33 @@ export default function TaxiLondrinaMaringaPage() {
         {/* HERO */}
         <section aria-label="Táxi de Londrina a Maringá"
           style={{ background: "linear-gradient(150deg, #0A0A0A 0%, #0d1a25 60%, #0A0A0A 100%)", position: "relative", overflow: "hidden" }}>
-          <div aria-hidden="true" style={{
-            position: "absolute", top: 0, right: 0, width: "45%", height: "100%",
-            background: "radial-gradient(ellipse at 80% 40%, rgba(255,204,0,0.06) 0%, transparent 60%)",
-            pointerEvents: "none",
-          }} />
+                    {/* Hero image — desktop/tablet only, oculta no mobile via CSS */}
+          <div
+            aria-hidden="true"
+            className="hero-image-wrapper"
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "50%",
+              height: "100%",
+              zIndex: 0,
+            }}
+          >
+            <Image
+              src="/og-taxi-londrina-maringa.jpg"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 768px) 0px, 50vw"
+              style={{ objectFit: "cover", objectPosition: "center" }}
+            />
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to right, #0A0A0A 0%, rgba(10,10,10,0.5) 40%, transparent 100%)",
+            }} />
+          </div>
           <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "5rem 1.5rem", position: "relative", zIndex: 1 }}>
             <div style={{ maxWidth: "700px" }}>
               <div style={{
