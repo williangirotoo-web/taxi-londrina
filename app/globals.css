@@ -118,3 +118,20 @@ img { max-width: 100%; height: auto; }
     display: block;
   }
 }
+
+/* ─── Hero mobile image — versão C ────────────────────────────────────────── */
+/* Visível apenas no mobile (<768px), abaixo dos CTAs.                         */
+/* Container com padding-top 56.25% (16/9) → aspect-ratio fixo → CLS = 0.     */
+/* loading="lazy" → não compete com o H1 (LCP). Oculta no desktop.             */
+.hero-mobile-image {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;    /* aspect-ratio 16/9 — zero CLS */
+  overflow: hidden;
+  display: block;
+}
+@media (min-width: 768px) {
+  .hero-mobile-image {
+    display: none;          /* Desktop: usa .hero-image-wrapper lateral */
+  }
+}

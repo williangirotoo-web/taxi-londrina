@@ -360,6 +360,29 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+
+          {/* ── Imagem mobile — versão C ─────────────────────────────────────
+              Visível apenas no mobile (<768px) via CSS (.hero-mobile-image).
+              Desktop mantém a imagem lateral absoluta (.hero-image-wrapper).
+              loading="lazy" → não compete com o LCP (H1). CLS=0 via padding-top.
+          ─────────────────────────────────────────────────────────────────── */}
+          <div className="hero-mobile-image" aria-hidden="true">
+            <Image
+              src="/og-home.jpg"
+              alt=""
+              fill
+              loading="lazy"
+              sizes="100vw"
+              style={{ objectFit: "cover", objectPosition: "center 30%" }}
+            />
+            {/* Gradient overlay — integra com o hero preto acima e abaixo */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(to bottom, #0A0A0A 0%, transparent 30%, transparent 75%, #0A0A0A 100%)",
+            }} />
+          </div>
+
         </section>
 
         {/* ════════════════════════════════════════════════════════════════════
