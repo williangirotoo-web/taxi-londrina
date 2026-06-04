@@ -231,7 +231,7 @@ export default function HomePage() {
             }} />
           </div>
 
-          <div className="container-base section-py" style={{ position: "relative", zIndex: 1 }}>
+          <div className="container-base section-py hero-section-mobile-pt" style={{ position: "relative", zIndex: 1 }}>
             <div style={{ maxWidth: "680px" }}>
               {/* Badge EEAT */}
               <div

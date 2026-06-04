@@ -119,6 +119,14 @@ img { max-width: 100%; height: auto; }
   }
 }
 
+/* ─── Hero — padding-top reduzido no mobile (−40%) ────────────────────────── */
+/* Desktop: 5rem (80px) intocado. Mobile: 3rem (48px) — só padding-top.        */
+@media (max-width: 767px) {
+  .hero-section-mobile-pt {
+    padding-top: 3rem !important;
+  }
+}
+
 /* ─── Hero mobile image — versão C ────────────────────────────────────────── */
 /* Visível apenas no mobile (<768px), abaixo dos CTAs.                         */
 /* Container com padding-top 56.25% (16/9) → aspect-ratio fixo → CLS = 0.     */
