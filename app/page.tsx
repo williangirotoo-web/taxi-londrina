@@ -28,6 +28,7 @@ import Link from "next/link"
 import { pageMetadata } from "@/lib/metadata"
 import { buildFAQSchema, serializeSchema } from "@/lib/schemas"
 import { business, whatsappUrl, whatsappMessages } from "@/lib/business"
+import FormularioAgendamento from "@/app/components/FormularioAgendamento"
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 export const metadata: Metadata = pageMetadata.home
@@ -542,6 +543,45 @@ export default function HomePage() {
                   </div>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════════
+            3b. FORMULÁRIO DE AGENDAMENTO PREMIUM
+        ════════════════════════════════════════════════════════════════════ */}
+        <section
+          aria-labelledby="formulario-heading"
+          style={{ background: "#0A0A0A" }}
+          className="section-py"
+        >
+          <div className="container-base">
+            <div style={{ maxWidth: "760px", margin: "0 auto" }}>
+              <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+                <div style={{
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                  background: "rgba(255,204,0,0.1)", border: "1px solid rgba(255,204,0,0.25)",
+                  borderRadius: "999px", padding: "5px 14px", marginBottom: "1rem",
+                }}>
+                  <span style={{ color: "#FFCC00", fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                    📅 Agendamento antecipado
+                  </span>
+                </div>
+                <h2
+                  id="formulario-heading"
+                  style={{
+                    fontSize: "clamp(1.375rem, 2.8vw, 1.875rem)",
+                    fontWeight: 800, color: "#FFFFFF", marginBottom: "0.75rem",
+                  }}
+                >
+                  Agende sua corrida com hora marcada
+                </h2>
+                <p style={{ color: "#9a9a9a", fontSize: "0.95rem", lineHeight: 1.7 }}>
+                  Aeroporto, transfer executivo ou viagem intermunicipal.
+                  Preencha e receba confirmação pelo WhatsApp.
+                </p>
+              </div>
+              <FormularioAgendamento paginaOrigem="home" />
             </div>
           </div>
         </section>

@@ -269,4 +269,14 @@ export const pageMetadata = {
     ogImageAlt: `Blog ${business.shortName} — dicas de transporte em Londrina`,
   }),
 
+  transferAeroporto: buildMetadata({
+    title: "Transfer Aeroporto Londrina | Receptivo e Monitoramento",
+    description:
+      "Transfer receptivo no Aeroporto José Richa (LDB). Plaquinha com seu nome, " +
+      "monitoramento de voo e motorista bilíngue. Hotéis, Centro e Gleba Palhano.",
+    path: "/transfer-aeroporto-londrina",
+    ogImage: "og-taxi-aeroporto-londrina.jpg",
+    ogImageAlt: "Transfer aeroporto Londrina — receptivo com plaquinha no Aeroporto José Richa",
+  }),
+
 } as const
