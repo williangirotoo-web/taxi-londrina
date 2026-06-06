@@ -128,6 +128,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
+    {
+      url: url("/blog/aeroporto-londrina-para-maringa"),
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
   ]
 
   // ── Rotas dinâmicas — posts do blog ─────────────────────────────────────────
