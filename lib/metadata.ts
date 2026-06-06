@@ -270,13 +270,35 @@ export const pageMetadata = {
   }),
 
   transferAeroporto: buildMetadata({
-    title: "Transfer Aeroporto Londrina | Receptivo e Monitoramento",
+    title: "Transfer Aeroporto Londrina | Receptivo no Desembarque",
     description:
       "Transfer receptivo no Aeroporto José Richa (LDB). Plaquinha com seu nome, " +
       "monitoramento de voo e motorista bilíngue. Hotéis, Centro e Gleba Palhano.",
     path: "/transfer-aeroporto-londrina",
     ogImage: "og-taxi-aeroporto-londrina.jpg",
     ogImageAlt: "Transfer aeroporto Londrina — receptivo com plaquinha no Aeroporto José Richa",
+  }),
+
+  motoristaParticularAeroporto: buildMetadata({
+    title: "Motorista Particular Aeroporto Londrina | Executivo",
+    description:
+      "Motorista particular executivo no Aeroporto José Richa (LDB). " +
+      "Recepção com plaquinha, monitoramento de voo e bilíngue. " +
+      "Aeroporto → hotel, empresa ou reunião em Londrina.",
+    path: "/motorista-particular-aeroporto-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Motorista particular aeroporto Londrina — atendimento executivo",
+  }),
+
+  taxiAeroportoJoseRicha: buildMetadata({
+    title: "Táxi Aeroporto Governador José Richa | Londrina",
+    description:
+      "Táxi no Aeroporto Governador José Richa (LDB) em Londrina. " +
+      "Terminal de passageiros, embarque e desembarque. " +
+      "Motorista bilíngue, monitoramento de voo, 24 horas.",
+    path: "/taxi-aeroporto-governador-jose-richa",
+    ogImage: "og-taxi-aeroporto-londrina.jpg",
+    ogImageAlt: "Táxi Aeroporto Governador José Richa — terminal de passageiros Londrina",
   }),
 
 } as const

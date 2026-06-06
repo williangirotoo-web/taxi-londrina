@@ -98,6 +98,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: url("/motorista-particular-aeroporto-londrina"),
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: url("/taxi-aeroporto-governador-jose-richa"),
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+    {
       url: url("/contato"),
       lastModified: BUILD_DATE,
       changeFrequency: "monthly",
