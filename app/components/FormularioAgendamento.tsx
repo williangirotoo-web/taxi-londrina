@@ -45,33 +45,41 @@ export default function FormularioAgendamento({ paginaOrigem = "home" }: Formula
   const submit = async (e: FormEvent) => {
     e.preventDefault()
     if (!form.nome || !form.whatsapp) return
-    setStatus("loading")
 
-    try {
-      const res = await fetch("/api/agendamento", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, pagina: paginaOrigem }),
+    // Montar mensagem WhatsApp com todos os campos
+    const msg = [
+      `📅 *Novo agendamento — Táxi Londrina*`,
+      ``,
+      `👤 *Nome:* ${form.nome}`,
+      `📱 *WhatsApp:* ${form.whatsapp}`,
+      `📍 *Origem:* ${form.origem}`,
+      `🏁 *Destino:* ${form.destino}`,
+      `📆 *Data:* ${form.data}`,
+      `⏰ *Horário:* ${form.horario}`,
+      `👥 *Passageiros:* ${form.passageiros}`,
+      `🧳 *Malas:* ${form.malas}`,
+      form.observacoes ? `📝 *Obs:* ${form.observacoes}` : ``,
+    ].filter(Boolean).join('\n')
+
+    // Evento de conversão GA4 + Google Ads
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "agendamento_enviado", {
+        event_category: "formulario",
+        event_label: paginaOrigem,
+        origem: form.origem,
+        destino: form.destino,
+        value: 1,
       })
-
-      if (res.ok) {
-        setStatus("success")
-        // Evento de conversão GA4 + Google Ads
-        if (typeof window !== "undefined" && window.gtag) {
-          window.gtag("event", "agendamento_enviado", {
-            event_category: "formulario",
-            event_label: paginaOrigem,
-            origem: form.origem,
-            destino: form.destino,
-            value: 1,
-          })
-        }
-      } else {
-        setStatus("error")
-      }
-    } catch {
-      setStatus("error")
     }
+
+    // Abrir WhatsApp com mensagem pré-preenchida
+    window.open(
+      `https://wa.me/5544998913040?text=${encodeURIComponent(msg)}`,
+      '_blank',
+      'noopener,noreferrer'
+    )
+
+    setStatus("success")
   }
 
   const inputStyle: React.CSSProperties = {
@@ -246,32 +254,20 @@ export default function FormularioAgendamento({ paginaOrigem = "home" }: Formula
       {/* Botão */}
       <button
         type="submit"
-        disabled={status === "loading"}
         style={{
           display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
-          width: "100%", background: status === "loading" ? "#9a7700" : "#FFCC00",
-          color: "#0A0A0A", fontWeight: 800, fontSize: "1rem",
+          width: "100%", background: "#25D366",
+          color: "#FFFFFF", fontWeight: 800, fontSize: "1rem",
           padding: "1rem", borderRadius: "8px",
-          border: "none", cursor: status === "loading" ? "not-allowed" : "pointer",
-          transition: "background 0.2s",
+          border: "none", cursor: "pointer",
+          transition: "filter 0.2s",
         }}
+        onMouseOver={(e) => (e.currentTarget.style.filter = "brightness(1.08)")}
+        onMouseOut={(e) => (e.currentTarget.style.filter = "brightness(1)")}
       >
-        {status === "loading" ? (
-          <span>Enviando...</span>
-        ) : (
-          <>
-            <span>Solicitar agendamento</span>
-            <span>→</span>
-          </>
-        )}
+        <WhatsAppIcon size={20} />
+        Enviar agendamento pelo WhatsApp
       </button>
-
-      {status === "error" && (
-        <p style={{ color: "#ef4444", fontSize: "0.85rem", textAlign: "center" }}>
-          Erro ao enviar. Tente pelo{" "}
-          <a href="https://wa.me/5544998913040" style={{ color: "#FFCC00" }}>WhatsApp</a>.
-        </p>
-      )}
 
       <p style={{ color: "#555", fontSize: "0.75rem", textAlign: "center", lineHeight: 1.5 }}>
         Nenhum dado é armazenado neste site. Você receberá retorno pelo WhatsApp.
