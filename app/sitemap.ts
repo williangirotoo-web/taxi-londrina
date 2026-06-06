@@ -121,6 +121,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.6,
     },
+    // ── Artigos do blog — rotas estáticas ──────────────────────────────────────
+    {
+      url: url("/blog/quanto-custa-taxi-aeroporto-londrina-centro"),
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
   ]
 
   // ── Rotas dinâmicas — posts do blog ─────────────────────────────────────────
