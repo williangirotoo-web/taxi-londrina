@@ -146,6 +146,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
+    {
+      url: url("/blog/hoteis-proximos-aeroporto-londrina"),
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
   ]
 
   // ── Rotas dinâmicas — posts do blog ─────────────────────────────────────────
