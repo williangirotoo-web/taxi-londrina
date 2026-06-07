@@ -301,4 +301,14 @@ export const pageMetadata = {
     ogImageAlt: "Táxi Aeroporto Governador José Richa — terminal de passageiros Londrina",
   }),
 
+  transporteEventos: buildMetadata({
+    title: "Transporte Executivo para Eventos em Londrina",
+    description:
+      "Transporte executivo para eventos em Londrina: ExpoLondrina, congressos e convenções. " +
+      "Frota para palestrantes, delegações e convidados VIP com hora marcada.",
+    path: "/transporte-executivo-eventos-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Transporte executivo para eventos em Londrina — frota corporativa",
+  }),
+
 } as const
