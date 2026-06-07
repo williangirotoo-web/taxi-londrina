@@ -321,4 +321,14 @@ export const pageMetadata = {
     ogImageAlt: "Transfer corporativo executivo em Londrina — clientes VIP e reuniões",
   }),
 
+  motoristaExecutivo: buildMetadata({
+    title: "Motorista Executivo em Londrina | Por Hora e Diária",
+    description:
+      "Motorista executivo em Londrina à disposição por 4h, 8h ou diária completa. " +
+      "Aguarda entre reuniões. Para empresários, advogados e executivos.",
+    path: "/motorista-executivo-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Motorista executivo em Londrina — disponível por hora ou diária",
+  }),
+
 } as const
