@@ -341,4 +341,14 @@ export const pageMetadata = {
     ogImageAlt: "Airport transfer Londrina — English-speaking driver at LDB airport",
   }),
 
+  privateDriver: buildMetadata({
+    title: "Private Driver in Londrina | Hourly & Daily Hire",
+    description:
+      "English-speaking private driver in Londrina for city tours, business meetings " +
+      "and day trips. Hourly or full day hire. Bilingual driver — Portuguese & English.",
+    path: "/private-driver-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Private driver in Londrina Brazil — city tours and business hire",
+  }),
+
 } as const
