@@ -311,4 +311,14 @@ export const pageMetadata = {
     ogImageAlt: "Transporte executivo para eventos em Londrina — frota corporativa",
   }),
 
+  transferCorporativo: buildMetadata({
+    title: "Transfer Corporativo em Londrina | Executivo VIP",
+    description:
+      "Transfer corporativo executivo em Londrina para visitantes, clientes VIP e reuniões. " +
+      "Motorista aguarda entre compromissos. Sem contrato, por viagem.",
+    path: "/transfer-corporativo-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Transfer corporativo executivo em Londrina — clientes VIP e reuniões",
+  }),
+
 } as const
