@@ -331,4 +331,14 @@ export const pageMetadata = {
     ogImageAlt: "Motorista executivo em Londrina — disponível por hora ou diária",
   }),
 
+  airportTransfer: buildMetadata({
+    title: "Airport Transfer Londrina | LDB · English Service",
+    description:
+      "Professional airport transfer in Londrina at Governador José Richa Airport (LDB). " +
+      "English-speaking driver, flight monitoring and meet & greet service.",
+    path: "/airport-transfer-londrina",
+    ogImage: "og-taxi-aeroporto-londrina.jpg",
+    ogImageAlt: "Airport transfer Londrina — English-speaking driver at LDB airport",
+  }),
+
 } as const
