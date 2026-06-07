@@ -351,4 +351,14 @@ export const pageMetadata = {
     ogImageAlt: "Private driver in Londrina Brazil — city tours and business hire",
   }),
 
+  executiveDriver: buildMetadata({
+    title: "Executive Driver in Londrina | Premium Corporate",
+    description:
+      "Executive driver in Londrina for C-level executives, investors and corporate visitors. " +
+      "Premium vehicle, full discretion and bilingual service in English.",
+    path: "/executive-driver-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Executive driver in Londrina — premium corporate service for C-level",
+  }),
+
 } as const
