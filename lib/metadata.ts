@@ -411,4 +411,14 @@ export const pageMetadata = {
     ogImageAlt: "Táxi Londrina São Paulo — transfer direto 450 km pela Castelo Branco",
   }),
 
+  taxiOurinhos: buildMetadata({
+    title: "Táxi Londrina Ourinhos | Transfer Direto",
+    description:
+      "Transfer de táxi de Londrina a Ourinhos (SP) pela PR-218. " +
+      "130 km, 1h30 com hora marcada. Agronegócio, hospitais e cidades do sudoeste paulista.",
+    path: "/taxi-londrina-ourinhos",
+    ogImage: "og-taxi-londrina-curitiba.jpg",
+    ogImageAlt: "Táxi Londrina Ourinhos — transfer direto pela PR-218",
+  }),
+
 } as const
