@@ -62,6 +62,7 @@ export const metadata: Metadata = {
       {
         rel: "mask-icon",
         url: "/safari-pinned-tab.svg",
+        // @ts-expect-error — color não está no tipo mas é suportado
         color: business.themeColor,
       },
     ],
@@ -91,9 +92,12 @@ export const metadata: Metadata = {
     },
   },
 
-  // Verificação Google Search Console
+  // Verificação Google Search Console + Bing Webmaster Tools
   verification: {
     google: business.googleVerification,
+    other: {
+      "msvalidate.01": "8D142D6AD3EBD13FF8643D0276714A95",
+    },
   },
 }
 
