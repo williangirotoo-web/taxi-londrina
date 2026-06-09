@@ -421,4 +421,14 @@ export const pageMetadata = {
     ogImageAlt: "Táxi Londrina Ourinhos — transfer direto pela PR-218",
   }),
 
+  motoristaCarro: buildMetadata({
+    title: "Motorista para Dirigir Seu Carro em Londrina",
+    description:
+      "Contrate apenas o motorista profissional para o seu carro em Londrina. " +
+      "Viagens, cirurgia, casamentos, eventos e deslocamentos noturnos. DDC disponível.",
+    path: "/motorista-para-dirigir-seu-carro-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Motorista para dirigir seu carro em Londrina — condutor particular DDC",
+  }),
+
 } as const

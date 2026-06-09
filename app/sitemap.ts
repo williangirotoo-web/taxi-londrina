@@ -164,6 +164,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: url("/motorista-para-dirigir-seu-carro-londrina"),
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+    {
       url: url("/transfer-aeroporto-londrina"),
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
