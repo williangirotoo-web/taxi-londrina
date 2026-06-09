@@ -62,7 +62,6 @@ export const metadata: Metadata = {
       {
         rel: "mask-icon",
         url: "/safari-pinned-tab.svg",
-        // @ts-expect-error — color não está no tipo mas é suportado
         color: business.themeColor,
       },
     ],
