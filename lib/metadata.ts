@@ -381,4 +381,14 @@ export const pageMetadata = {
     ogImageAlt: "Transfer aeropuerto Londrina — conductor bilingüe español portugués",
   }),
 
+  choferEjecutivo: buildMetadata({
+    title: "Chofer Ejecutivo en Londrina | Por Horas y Jornada",
+    description:
+      "Chofer ejecutivo bilingüe en Londrina a disposición por horas o jornada completa. " +
+      "Espera entre reuniones. Para empresarios y ejecutivos de Argentina y Paraguay.",
+    path: "/chofer-ejecutivo-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Chofer ejecutivo en Londrina Brasil — servicio por horas para empresarios",
+  }),
+
 } as const
