@@ -391,4 +391,24 @@ export const pageMetadata = {
     ogImageAlt: "Chofer ejecutivo en Londrina Brasil — servicio por horas para empresarios",
   }),
 
+  transferGuarulhos: buildMetadata({
+    title: "Transfer Londrina Guarulhos | Aeroporto GRU",
+    description:
+      "Transfer de Londrina ao Aeroporto de Guarulhos (GRU). " +
+      "Monitoramento de voo, terminais T1/T2/T3 e 470 km com hora marcada. Bagagem e voos internacionais.",
+    path: "/transfer-londrina-guarulhos",
+    ogImage: "og-taxi-aeroporto-londrina.jpg",
+    ogImageAlt: "Transfer Londrina Guarulhos — aeroporto GRU, terminais T1 T2 T3",
+  }),
+
+  taxiSaoPaulo: buildMetadata({
+    title: "Táxi Londrina São Paulo | Transfer Direto",
+    description:
+      "Transfer de táxi de Londrina a São Paulo pela Castelo Branco. " +
+      "Paulista, Faria Lima, Congonhas, hospitais e Grande SP. 450 km com hora marcada.",
+    path: "/taxi-londrina-sao-paulo",
+    ogImage: "og-taxi-londrina-curitiba.jpg",
+    ogImageAlt: "Táxi Londrina São Paulo — transfer direto 450 km pela Castelo Branco",
+  }),
+
 } as const
