@@ -361,4 +361,14 @@ export const pageMetadata = {
     ogImageAlt: "Executive driver in Londrina — premium corporate service for C-level",
   }),
 
+  chauffeur: buildMetadata({
+    title: "Chauffeur in Londrina | Premium Chauffeur Service",
+    description:
+      "Professional chauffeur service in Londrina, Brazil. Uniformed driver, premium black " +
+      "vehicle, punctuality guaranteed. Trusted by British and Australian visitors.",
+    path: "/chauffeur-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Chauffeur service in Londrina Brazil — uniformed driver, premium vehicle",
+  }),
+
 } as const
