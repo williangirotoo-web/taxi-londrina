@@ -92,12 +92,9 @@ export const metadata: Metadata = {
     },
   },
 
-  // Verificação Google Search Console + Bing Webmaster Tools
+  // Verificação Google Search Console
   verification: {
     google: business.googleVerification,
-    other: {
-      "msvalidate.01": "8D142D6AD3EBD13FF8643D0276714A95",
-    },
   },
 }
 
@@ -114,6 +111,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={inter.variable}>
       <head>
+        {/* Bing Webmaster Tools verification */}
+        <meta name="msvalidate.01" content="8D142D6AD3EBD13FF8643D0276714A95" />
+
         {/*
           LocalBusiness + TaxiService
           Inserido UMA VEZ aqui — presente em todas as páginas
