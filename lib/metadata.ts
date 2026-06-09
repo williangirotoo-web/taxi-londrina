@@ -371,4 +371,14 @@ export const pageMetadata = {
     ogImageAlt: "Chauffeur service in Londrina Brazil — uniformed driver, premium vehicle",
   }),
 
+  transferAeropuerto: buildMetadata({
+    title: "Transfer Aeropuerto Londrina | Servicio Ejecutivo",
+    description:
+      "Transfer privado desde el Aeropuerto de Londrina (LDB), Brasil. " +
+      "Conductor bilingüe español-portugués, seguimiento de vuelo y recepción en llegadas.",
+    path: "/transfer-aeropuerto-londrina",
+    ogImage: "og-taxi-aeroporto-londrina.jpg",
+    ogImageAlt: "Transfer aeropuerto Londrina — conductor bilingüe español portugués",
+  }),
+
 } as const

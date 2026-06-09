@@ -134,6 +134,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: url("/transfer-aeropuerto-londrina"),
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
       url: url("/transfer-aeroporto-londrina"),
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
