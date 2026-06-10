@@ -431,4 +431,14 @@ export const pageMetadata = {
     ogImageAlt: "Motorista para dirigir seu carro em Londrina — condutor particular DDC",
   }),
 
+  transporteTerrestreExecutivo: buildMetadata({
+    title: "Transporte Terrestre Executivo em Londrina",
+    description:
+      "Empresa de transporte terrestre executivo em Londrina. " +
+      "Viagens corporativas, transfer aeroporto, rotas interestaduais e motorista executivo.",
+    path: "/transporte-terrestre-executivo-londrina",
+    ogImage: "og-taxi-executivo-londrina.jpg",
+    ogImageAlt: "Transporte terrestre executivo em Londrina — empresa de transfer premium",
+  }),
+
 } as const

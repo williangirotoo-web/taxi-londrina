@@ -170,6 +170,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: url("/transporte-terrestre-executivo-londrina"),
+      lastModified: BUILD_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.95,
+    },
+    {
       url: url("/transfer-aeroporto-londrina"),
       lastModified: BUILD_DATE,
       changeFrequency: "monthly" as const,
