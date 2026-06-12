@@ -1134,7 +1134,48 @@ export default function HomePage() {
               alignItems: "center",
             }}
           >
-            <p style={{ fontSize: "0.8rem" }}>
+            
+          {/* ── Transporte Executivo Premium ── */}
+          <div
+            style={{
+              borderTop: "1px solid #1a1a1a",
+              paddingTop: "1.5rem",
+              marginTop: "1rem",
+            }}
+          >
+            <p
+              style={{
+                color: "#6b6b6b",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                marginBottom: "0.5rem",
+              }}
+            >
+              Transporte Executivo Premium
+            </p>
+            <p
+              style={{
+                color: "#6b6b6b",
+                fontSize: "0.8rem",
+                lineHeight: 1.6,
+                marginBottom: "0.75rem",
+                maxWidth: "480px",
+              }}
+            >
+              Para atendimento corporativo, transfer para aeroportos e mobilidade executiva de alto padrão, conheça a Londrina Executivo.
+            </p>
+            <a
+              href="https://londrinaexecutivo.com.br"
+              rel="noopener"
+              style={{ color: "#FFCC00", fontSize: "0.8rem", fontWeight: 600, textDecoration: "none" }}
+            >
+              Conhecer Londrina Executivo →
+            </a>
+          </div>
+
+          <p style={{ fontSize: "0.8rem" }}>
               © {new Date().getFullYear()} {business.name} · Londrina, PR
             </p>
             <Link

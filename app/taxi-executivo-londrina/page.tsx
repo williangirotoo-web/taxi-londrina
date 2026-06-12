@@ -606,6 +606,25 @@ export default function TaxiExecutivoPage() {
               <Link href="/" style={{ fontSize: "0.8rem", color: "#9a9a9a", textDecoration: "none" }}>← Voltar ao início</Link>
               <Link href="/contato" style={{ fontSize: "0.8rem", color: "#FFCC00", textDecoration: "none" }}>Solicitar orçamento →</Link>
             </div>
+
+            {/* ── Transporte Executivo Premium ── */}
+            <div style={{
+              width: "100%",
+              borderTop: "1px solid #1a1a1a",
+              paddingTop: "1.25rem",
+              marginTop: "0.5rem",
+            }}>
+              <p style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "#5a5a5a", marginBottom: "0.4rem" }}>
+                Transporte Executivo Premium
+              </p>
+              <p style={{ fontSize: "0.78rem", color: "#5a5a5a", lineHeight: 1.6, marginBottom: "0.5rem", maxWidth: "460px" }}>
+                Para transfer corporativo, aeroportos e mobilidade executiva premium, conheça a Londrina Executivo.
+              </p>
+              <a href="https://londrinaexecutivo.com.br" rel="noopener"
+                style={{ color: "#FFCC00", fontSize: "0.78rem", fontWeight: 600, textDecoration: "none" }}>
+                Conhecer Londrina Executivo →
+              </a>
+            </div>
           </div>
         </footer>
       </main>
